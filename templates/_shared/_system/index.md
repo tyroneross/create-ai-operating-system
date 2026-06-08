@@ -8,7 +8,7 @@ python3 tools/scripts/wiki_index.py rebuild
 
 ## Sources
 
-- `source-example-research-brief` - Example Research Brief [seedling]
+No source summaries yet. Add private source summaries after ingest.
 
 ## Concepts
 

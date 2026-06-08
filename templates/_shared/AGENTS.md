@@ -38,7 +38,6 @@ Before committing, publishing, syncing, or sharing:
 
 ```bash
 ./checks/offline_check.sh
-rg -n --hidden --glob '!.git/**' --glob '!*.db' --glob '!*.sqlite' 'REPLACE_ME|PRIVATE|SECRET|TOKEN|PASSWORD|API_KEY'
 ```
 
 If the result contains real private data, remove or generalize it before sharing.

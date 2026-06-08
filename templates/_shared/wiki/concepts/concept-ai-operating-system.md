@@ -14,14 +14,14 @@ tags: [ai-operating-system, knowledge-system]
 
 An AI Operating System is a local, structured workspace that turns raw context into reusable operating knowledge. It combines source retention, wiki synthesis, agent instructions, local search, and lifecycle logs.
 
-## Distinction
+## Role
 
-This is not only a notes vault and not only a chat memory layer. It is a file-based operating layer that agents can read, update, verify, and hand off across sessions.
+The workspace acts as a file-based operating layer that agents can read, update, verify, and hand off across sessions.
 
 ## Components
 
 - Raw source archive.
-- Compiled wiki.
+- Written wiki.
 - Agent rules.
 - Index and log.
 - Variant-specific work or personal templates.
@@ -29,4 +29,4 @@ This is not only a notes vault and not only a chat memory layer. It is a file-ba
 
 ## Related
 
-- [[source-example-research-brief]]
+- [[template-source-page]]

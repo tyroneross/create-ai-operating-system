@@ -1,6 +1,17 @@
 # Personal AI Operating System
 
-This workspace is a local-first operating system for personal goals, learning, routines, decisions, and durable self-reflection.
+A private, local-first workspace for goals, learning, routines, decisions, and personal reviews.
+
+## How it works
+
+This workspace gives personal context a clear file structure. Source material stays in `raw/`. Summaries, decisions, and reusable ideas live in `wiki/`. AI tools start with `AGENTS.md` so they know what to read first.
+
+## Why keep it
+
+- Keep goals, learning, and decisions in one system.
+- Preserve source material without mixing it into summaries.
+- Make weekly review and recall easier.
+- Keep private personal context out of the public template.
 
 ## Start
 
@@ -10,7 +21,7 @@ python3 tools/scripts/wiki_index.py rebuild
 ./tools/scripts/llmwiki search "personal decision"
 ```
 
-## Personal Loop
+## Personal loop
 
 1. Capture raw notes, links, and documents in `raw/ingest/` or a relevant personal raw folder.
 2. Summarize reusable source material into `wiki/sources/`.
@@ -19,7 +30,7 @@ python3 tools/scripts/wiki_index.py rebuild
 5. Use `wiki/templates/` for weekly reviews, learning plans, and decision records.
 6. Rebuild the local index before recall-heavy work.
 
-## Folder Map
+## Folder map
 
 | Folder | Use |
 |---|---|

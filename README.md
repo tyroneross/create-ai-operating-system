@@ -1,62 +1,103 @@
-# create-ai-operating-system
+# AI Operating System Quickstart
 
-Scaffold a local-first AI Operating System for either work or personal use.
+A private, local-first workspace for AI-assisted work and personal planning.
 
-An AI Operating System is a structured Markdown workspace for capture, summaries, recall, decisions, and execution. It gives AI tools clear rules, organized files, local search, and privacy checks.
+## Why This Exists
 
-## Create A Workspace
+Most AI sessions lose context because source files, decisions, notes, and follow-up work live in different places. This package creates one Markdown workspace with clear rules for humans and AI tools.
+
+The public template is safe by default. It ships placeholders and folder guidance, not real source files, personal details, company history, or private project examples.
+
+## How It Works
+
+- Source material stays in `raw/`.
+- Summaries, decisions, and reusable ideas live in `wiki/`.
+- `AGENTS.md` tells AI tools what to read first and how to use the workspace.
+- The work and personal templates use different page types and privacy rules.
+- A small SQLite index makes Markdown pages easier to query.
+- Local checks scan for private paths and common sensitive markers before sharing.
+
+## Start A Workspace
+
+Create a personal workspace with the `create-ai-operating-system` package:
 
 ```bash
 npx create-ai-operating-system my-aos --personal
 cd my-aos
+```
+
+Or create a work workspace:
+
+```bash
+npx create-ai-operating-system work-aos --work
+cd work-aos
+```
+
+Read the rules, then build the index:
+
+```bash
+sed -n '1,120p' AGENTS.md
 python3 tools/scripts/wiki_index.py rebuild
 ./tools/scripts/llmwiki status
 ```
 
-Work template:
-
-```bash
-npx create-ai-operating-system work-aos --work
-```
-
-Personal template:
-
-```bash
-npx create-ai-operating-system personal-aos --personal
-```
-
-## What It Creates
-
-- `AGENTS.md` for Codex, Claude Code, and other agentic coding tools.
-- `brain/rules.md` and `brain/voice.md` as the behavior layer.
-- `_system/OPERATING_MODEL.md`, `_system/TAXONOMY.md`, `_system/index.md`, and `_system/log.md`.
-- `raw/` folders with README placeholders instead of real source files.
-- `wiki/` pages for source summaries, durable concepts, and work/personal operating records.
-- `tools/scripts/wiki_index.py` for local SQLite-backed Markdown indexing.
-- `tools/scripts/llmwiki` as a read-only query wrapper.
-- `checks/` scripts for smoke tests and privacy-oriented offline checks.
-
-## Two Templates
+## Templates
 
 | Template | Best for | Core pages |
 |---|---|---|
-| `work` | Projects, meetings, decisions, research, customer/stakeholder context, operating reviews | Project page, decision log, meeting synthesis, project plan |
+| `work` | Projects, meetings, decisions, research, stakeholder context, operating reviews | Project page, decision log, meeting synthesis, project plan |
 | `personal` | Goals, learning, routines, personal decisions, reviews, private research | Personal operating model, weekly review, learning plan, decision log |
 
 Both templates use mock descriptions and placeholders. They do not ship personal content, company names, project history, local install paths, raw PDFs, or private source summaries.
 
-## What Makes It Special
+## Use The Workspace
 
-- It creates two starting points: one for work and one for personal use.
-- It gives AI tools a clear reading order through `AGENTS.md`.
-- It separates source files from the summaries and decisions written into `wiki/`.
-- It ships placeholder raw folders instead of real source examples.
-- It includes local search through a rebuildable SQLite index.
-- It includes privacy checks before sharing.
-- It keeps the main workspace in Markdown so it stays easy to inspect and edit.
-- It keeps work and personal material separate because they have different privacy risks and review habits.
+1. Read the operating files:
 
-## Privacy Model
+   ```bash
+   sed -n '1,160p' AGENTS.md
+   sed -n '1,160p' brain/rules.md
+   sed -n '1,160p' _system/OPERATING_MODEL.md
+   ```
+
+2. Add real source material only in a private copy. Start with `raw/ingest/` or the relevant raw folder.
+
+3. Create or update a source summary in `wiki/sources/`. The summary should capture what the source says, why it matters, key decisions, open questions, and links to related pages.
+
+4. Move reusable ideas into `wiki/concepts/`. Record project or personal execution in the variant folder: `wiki/work/` for work, `wiki/life/` for personal.
+
+5. Rebuild search:
+
+   ```bash
+   python3 tools/scripts/wiki_index.py rebuild
+   ```
+
+6. Query the workspace:
+
+   ```bash
+   ./tools/scripts/llmwiki search "decision log"
+   ```
+
+7. Run checks before sharing:
+
+   ```bash
+   ./checks/offline_check.sh
+   ```
+
+See [GUIDE.md](GUIDE.md) for the longer walkthrough.
+
+## Files Created
+
+- `AGENTS.md` tells AI tools what to read first.
+- `brain/rules.md` and `brain/voice.md` define update rules and writing style.
+- `_system/` holds the operating model, taxonomy, index, and log.
+- `raw/` contains README placeholders instead of real source files.
+- `wiki/` contains source summaries, reusable ideas, and work/personal records.
+- `tools/scripts/wiki_index.py` builds local search.
+- `tools/scripts/llmwiki` provides read-only search.
+- `checks/` runs smoke tests and privacy checks.
+
+## Privacy
 
 The public package is intentionally generic.
 
@@ -72,7 +113,7 @@ Use real content only in a private clone.
 
 ## Credits
 
-This project was built with inspiration from:
+Built with inspiration from:
 
 - Andrej Karpathy's LLM Wiki idea file: <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>
 - Nate Jones' Open Brain / OB1 project: <https://github.com/NateBJones-Projects/OB1>
@@ -84,12 +125,6 @@ npm test
 npm run smoke
 npm pack --dry-run
 node bin/create-ai-operating-system.js .tmp/demo --work --force
-```
-
-## Publishing
-
-```bash
-npm publish --access public
 ```
 
 ## License

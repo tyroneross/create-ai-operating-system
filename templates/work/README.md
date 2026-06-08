@@ -1,6 +1,17 @@
 # Work AI Operating System
 
-This workspace is a local-first operating system for professional knowledge work. It is designed for projects, meetings, decisions, research, customer context, and repeatable operating reviews.
+A private, local-first workspace for projects, meetings, decisions, research, stakeholder context, and operating reviews.
+
+## How it works
+
+This workspace gives work context a clear file structure. Source material stays in `raw/`. Summaries, decisions, and reusable ideas live in `wiki/`. AI tools start with `AGENTS.md` so they know what to read first.
+
+## Why keep it
+
+- Keep projects, meetings, and decisions in one system.
+- Preserve source material without mixing it into summaries.
+- Make handoffs easier for future AI sessions.
+- Keep private work context out of the public template.
 
 ## Start
 
@@ -10,7 +21,7 @@ python3 tools/scripts/wiki_index.py rebuild
 ./tools/scripts/llmwiki search "project decision"
 ```
 
-## Work Loop
+## Work loop
 
 1. Capture source material in `raw/ingest/` or the relevant work raw folder.
 2. Summarize sources into `wiki/sources/`.
@@ -19,7 +30,7 @@ python3 tools/scripts/wiki_index.py rebuild
 5. Use `wiki/templates/` for project plans, meeting synthesis, and decision logs.
 6. Rebuild the local index before recall-heavy work.
 
-## Folder Map
+## Folder map
 
 | Folder | Use |
 |---|---|

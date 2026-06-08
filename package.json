@@ -1,7 +1,7 @@
 {
   "name": "create-ai-operating-system",
-  "version": "0.1.0",
-  "description": "Scaffold a local-first AI Operating System for work or personal knowledge operations.",
+  "version": "0.1.1",
+  "description": "Create an AI Operating System quickstart for work or personal knowledge operations.",
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
@@ -11,6 +11,7 @@
     "bin",
     "templates",
     "README.md",
+    "GUIDE.md",
     "WRITEUP.md",
     "LICENSE"
   ],
@@ -31,10 +32,11 @@
     "operating-system",
     "knowledge-base",
     "markdown",
-    "obsidian",
+    "knowledge-work",
     "local-first",
     "scaffolder",
-    "llm-wiki"
+    "llm-wiki",
+    "quickstart"
   ],
   "publishConfig": {
     "access": "public"

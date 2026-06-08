@@ -23,7 +23,7 @@ done
 python3 tools/scripts/wiki_index.py status >/dev/null
 
 leaks=$(rg -n --hidden --glob '!.git/**' --glob '!checks/offline_check.sh' --glob '!*.db' --glob '!*.sqlite' \
-  '/Users/|WorkWiki|ObsidianVault|WorkLLMWiki|Desktop/LLM Wiki|Cisco|Csco|Akamai|IBM|Marine|OpenAI|Anthropic|Menlo|Fireworks|Strategic Initiatives|Product Operations|Business Innovator|Equity|MLT|Hyperscale|CSDI|Nvidia|ShearShare|tyroneross|Tyrone' . || true)
+  '(/[Uu]sers/[^[:space:]]+|/home/[^[:space:]]+|/Volumes/[^[:space:]]+|[A-Za-z]:\\[Uu]sers\\|PRIVATE_|PERSON_NAME|COMPANY_NAME|EMPLOYER_NAME|CLIENT_NAME|CUSTOMER_NAME|PROJECT_NAME|LOCAL_PATH|EMAIL_ADDRESS|PHONE_NUMBER|API_KEY|ACCESS_TOKEN|SECRET_KEY)' . || true)
 
 if [[ -n "$leaks" ]]; then
   echo "possible private/local content found:" >&2

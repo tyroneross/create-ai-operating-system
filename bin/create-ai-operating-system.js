@@ -15,7 +15,7 @@ const validTemplates = new Set(["work", "personal"]);
 function usage() {
   console.log(`Usage: create-ai-operating-system <target-dir> [options]
 
-Scaffold a local-first AI Operating System.
+Create a local-first AI Operating System.
 
 Options:
   --template <work|personal>  choose the generated template (default: personal)
