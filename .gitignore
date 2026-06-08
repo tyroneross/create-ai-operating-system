@@ -1,0 +1,19 @@
+.DS_Store
+.tmp/
+node_modules/
+*.tgz
+npm-debug.log*
+
+# Local source material from the pre-package wiki install.
+/raw/
+/wiki/
+/_system/
+/brain/
+/checks/
+/dependencies/
+/docs/
+/outputs/
+/tools/
+/.vector/
+/Open LLM Wiki Manager.command
+/INSTALLATION.md

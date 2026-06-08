@@ -1,0 +1,35 @@
+#!/usr/bin/env python3
+"""Read-only query wrapper for the AI Operating System."""
+
+from __future__ import annotations
+
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+
+SCRIPT = Path(__file__).resolve().with_name("wiki_index.py")
+
+
+def run(args: list[str]) -> int:
+    return subprocess.call([sys.executable, str(SCRIPT), *args])
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Read-only AI Operating System query CLI")
+    sub = parser.add_subparsers(dest="command", required=True)
+    sub.add_parser("status")
+    search = sub.add_parser("search")
+    search.add_argument("query")
+    search.add_argument("-k", "--limit", type=int, default=8)
+    args = parser.parse_args()
+
+    if args.command == "status":
+        return run(["status"])
+    if args.command == "search":
+        return run(["search", args.query, "--limit", str(args.limit)])
+    return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

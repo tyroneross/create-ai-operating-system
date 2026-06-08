@@ -1,0 +1,42 @@
+{
+  "name": "create-ai-operating-system",
+  "version": "0.1.0",
+  "description": "Scaffold a local-first AI Operating System for work or personal knowledge operations.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "create-ai-operating-system": "bin/create-ai-operating-system.js"
+  },
+  "files": [
+    "bin",
+    "templates",
+    "README.md",
+    "WRITEUP.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "npm run test:work && npm run test:personal",
+    "test:work": "rm -rf .tmp/work && node bin/create-ai-operating-system.js .tmp/work --template work && cd .tmp/work && ./checks/offline_check.sh",
+    "test:personal": "rm -rf .tmp/personal && node bin/create-ai-operating-system.js .tmp/personal --template personal && cd .tmp/personal && ./checks/offline_check.sh",
+    "smoke": "npm run smoke:work && npm run smoke:personal",
+    "smoke:work": "rm -rf .tmp/smoke-work && node bin/create-ai-operating-system.js .tmp/smoke-work --work && cd .tmp/smoke-work && ./checks/smoke_test.sh",
+    "smoke:personal": "rm -rf .tmp/smoke-personal && node bin/create-ai-operating-system.js .tmp/smoke-personal --personal && cd .tmp/smoke-personal && ./checks/smoke_test.sh",
+    "pack:check": "npm pack --dry-run"
+  },
+  "keywords": [
+    "ai",
+    "operating-system",
+    "knowledge-base",
+    "markdown",
+    "obsidian",
+    "local-first",
+    "scaffolder",
+    "llm-wiki"
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
+}

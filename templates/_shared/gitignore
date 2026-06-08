@@ -1,0 +1,22 @@
+.DS_Store
+.system-cache/
+.vector/
+.env
+.env.*
+*.db
+*.sqlite
+*.sqlite3
+__pycache__/
+.pytest_cache/
+
+# Keep real raw material private unless you intentionally version it.
+raw/ingest/*
+!raw/ingest/.gitkeep
+
+# Local exports and drafts that may contain private context.
+outputs/drafts/*
+!outputs/drafts/.gitkeep
+outputs/qa/*
+!outputs/qa/.gitkeep
+outputs/health/*
+!outputs/health/.gitkeep
