@@ -2,56 +2,50 @@
 
 ## Bottom Line
 
-This project packages a privacy-safe, local-first AI Operating System template. The unique move is combining a compiled LLM-maintained wiki with an explicit operating layer: agent instructions, source lifecycle, decision records, work/personal variants, local query tooling, and privacy gates.
+This project packages a privacy-safe, local-first AI Operating System template. It gives people a ready folder structure for source files, summaries, decisions, work records, personal records, local search, and AI tool instructions.
 
-## Inspiration
+## What It Is
 
-The template is inspired by two public patterns:
+The package creates a Markdown workspace with:
 
-- Andrej Karpathy's LLM Wiki gist: <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>
-- Nate Jones' Open Brain / OB1 project: <https://github.com/NateBJones-Projects/OB1>
+- `AGENTS.md` for AI tool instructions.
+- `brain/rules.md` for file, privacy, and update rules.
+- `brain/voice.md` for writing style.
+- `_system/` files for the operating model, taxonomy, index, and log.
+- `raw/` folders for source material.
+- `wiki/` pages for source summaries, concepts, decisions, and operating records.
+- `tools/scripts/wiki_index.py` for local search.
+- `checks/` scripts for basic validation and privacy checks.
 
-Karpathy's pattern frames the wiki as a compounding Markdown artifact between raw sources and the user. OB1 frames memory as infrastructure that multiple AI tools can use. This template takes a narrower path: a local file workspace that an agent can operate safely without requiring hosted memory infrastructure.
+## What Makes It Special
 
-## Unique Aspects
+### 1. It Starts With Two Templates
 
-### 1. The Wiki Is A Compiled Operating Layer
+The package includes a work template and a personal template. Work and personal systems use different page types, review habits, and privacy rules.
 
-Raw source folders are not the product. The useful layer is the maintained wiki: source summaries, concept pages, decisions, reviews, and operating records. That keeps future agents from re-deriving context from scratch on every question.
+### 2. It Gives AI Tools Clear Instructions
 
-### 2. Agents Get A Load Order
+The generated `AGENTS.md` tells AI tools what to read first, what rules to follow, and how to handle source files, summaries, and privacy checks.
 
-The generated `AGENTS.md` tells agents what to read first and what rules win on conflict. This makes the workspace more predictable than a normal folder of notes.
+### 3. It Keeps Source Files Separate From Written Knowledge
 
-### 3. Work And Personal Are Separate Templates
+Source files belong in `raw/`. Summaries, decisions, and reusable ideas belong in `wiki/`. This keeps original material available without turning the whole system into a pile of loose files.
 
-Work and personal systems have different privacy risks and operating cadences. The package creates two variants instead of pretending one page taxonomy fits both.
+### 4. It Ships Safe Placeholder Content
 
-### 4. Raw Folders Ship As Guidance, Not Content
+The public template does not include real raw documents, personal profiles, company details, or private project history. Raw folders contain README files that explain what could go there and what to consider before adding real material.
 
-The public template does not include real raw documents. Raw folders contain README files explaining what could go there, what tradeoffs to consider, and what to summarize into the wiki.
+### 5. It Includes Local Search
 
-### 5. Privacy Is A Release Gate
+`tools/scripts/wiki_index.py` builds a local SQLite index from Markdown files. The index can be rebuilt at any time.
 
-The generated `checks/offline_check.sh` scans for local paths, common private identifiers, and organization/project-style leakage. It is not a perfect DLP tool, but it makes privacy review part of the normal workflow.
+### 6. It Makes Privacy Review Part Of The Workflow
 
-### 6. The Index Is Rebuildable
+`checks/offline_check.sh` scans for local paths, private identifiers, and organization/project-style leakage before sharing.
 
-`tools/scripts/wiki_index.py` builds a local SQLite index from Markdown. The database is derived state, not canonical state. The canonical material remains portable Markdown.
+### 7. It Stays Easy To Inspect
 
-### 7. It Is Small Enough To Understand
-
-The package avoids hosted services, vector databases, cloud APIs, and large dependency trees. That makes it easier to inspect, fork, and adapt.
-
-## How It Compares
-
-| System | What It Optimizes For | This Template's Difference |
-|---|---|---|
-| Karpathy LLM Wiki | LLM-maintained Markdown knowledge base | Adds npm scaffolding, two variants, privacy gates, and local checks |
-| Open Brain / OB1 | AI memory infrastructure across tools | Keeps the canonical layer as files and does not require a hosted database or gateway |
-| NotebookLM | Source-grounded notebook analysis and generated artifacts | Keeps source lifecycle, rules, and decisions in editable local Markdown |
-| Obsidian | Durable local notes and links | Adds agent-specific operating rules and repeatable ingest/query/check workflows |
-| Mem | AI-assisted notes, document understanding, search, and chat | Keeps the workspace portable and vendor-neutral |
+The main files are Markdown. The scripts are small. The generated database is not the source of truth.
 
 ## What To Keep Private
 
@@ -59,19 +53,9 @@ Do not publish real brain/profile files, personal facts, employer details, clien
 
 Use the public package as a scaffold. Use private clones for real life and work context.
 
-## Source Notes
+## Credits
 
-- Karpathy's gist describes a persistent Markdown wiki built and maintained by an LLM from raw sources, with index/log files and Obsidian as a useful interface.
-- OB1 describes an open memory infrastructure layer for AI tools.
-- NotebookLM official help documents source import, source-grounded chat, summaries, Drive sync, URL import limits, and audio import behavior.
-- Obsidian official docs describe local links and Canvas as durable files.
-- Mem's help center describes PDF/image understanding, search, and chat over uploaded files.
+This project was built with inspiration from:
 
-## Research References
-
-- Karpathy LLM Wiki: <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>
-- Open Brain / OB1: <https://github.com/NateBJones-Projects/OB1>
-- NotebookLM source import help: <https://support.google.com/notebooklm/answer/16215270>
-- Obsidian Canvas help: <https://obsidian.md/help/plugins/canvas>
-- Obsidian internal links help: <https://obsidian.md/help/links>
-- Mem PDF and image understanding help: <https://help.mem.ai/features/pdf-and-image-understanding>
+- Andrej Karpathy's LLM Wiki idea file: <https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f>
+- Nate Jones' Open Brain / OB1 project: <https://github.com/NateBJones-Projects/OB1>

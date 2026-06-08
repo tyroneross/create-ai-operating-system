@@ -4,7 +4,7 @@ This AI Operating System turns raw context into reusable, queryable operating kn
 
 ## Core Idea
 
-Raw sources are preserved. The wiki is the compiled working layer. Agents read the wiki first, update it deliberately, and keep a log of changes. The system compounds because important synthesis is filed back into the workspace instead of disappearing into chat history.
+Raw sources are preserved. The wiki holds the summaries, decisions, and reusable ideas. AI tools read the wiki first, update it deliberately, and keep a log of changes. Useful answers are saved back into the workspace instead of disappearing into chat history.
 
 ## Daily Loop
 
