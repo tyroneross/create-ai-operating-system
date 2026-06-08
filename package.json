@@ -1,6 +1,6 @@
 {
   "name": "create-ai-operating-system",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Create an AI Operating System quickstart for work or personal knowledge operations.",
   "license": "Apache-2.0",
   "type": "module",
